@@ -1,0 +1,20 @@
+---
+Name: silverstripe-sentry-handler
+After: '#logging'
+Only:
+  envvarset: 'SENTRY_DSN'
+---
+SilverStripe\Core\Injector\Injector:
+  Psr\Log\LoggerInterface.errorhandler:
+    calls:
+      pushSentryErrorHandler: [ pushHandler, ['%$SentryMonologHandler'] ]
+  SentryMonologHandler:
+    class: 'Sentry\Monolog\Handler'
+    constructor:
+      - '%$Sentry\State\HubInterface'
+      - 'warning'
+  Sentry\State\HubInterface:
+    factory: 'Bigfork\SilverstripeSentryHandler\SentryHubFactory'
+    constructor:
+      options:
+        dsn: '`SENTRY_DSN`'
