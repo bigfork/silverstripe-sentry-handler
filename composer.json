@@ -12,6 +12,7 @@
   "require": {
     "php": "^7.4 || ^8.0",
     "sentry/sdk": "^3",
+    "sentry/sentry": "^3.4",
     "silverstripe/framework": "^4"
   },
   "autoload": {

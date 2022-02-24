@@ -13,6 +13,8 @@ SilverStripe\Core\Injector\Injector:
     constructor:
       - '%$Sentry\State\HubInterface'
       - 'warning'
+      - true
+      - true
   Sentry\State\HubInterface:
     factory: 'Bigfork\SilverstripeSentryHandler\SentryHubFactory'
     constructor:
