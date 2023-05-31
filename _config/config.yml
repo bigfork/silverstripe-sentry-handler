@@ -11,10 +11,10 @@ SilverStripe\Core\Injector\Injector:
   SentryMonologHandler:
     class: 'Sentry\Monolog\Handler'
     constructor:
-      - '%$Sentry\State\HubInterface'
-      - 'warning'
-      - true
-      - true
+      hub: '%$Sentry\State\HubInterface'
+      level: 'warning'
+      bubble: true
+      fillExtraContext: true
   Sentry\State\HubInterface:
     factory: 'Bigfork\SilverstripeSentryHandler\SentryHubFactory'
     constructor:
